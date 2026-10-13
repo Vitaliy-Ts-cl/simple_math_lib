@@ -2,6 +2,10 @@
 #include <cmath>
 #include <algorithm>
 
+double getThirdAngle(double angle1, double angle2) {
+    return 180.0 - (angle1 + angle2);
+}
+
 namespace MathLib
 {
     bool isEqual(double a, double b, double tolerance)
@@ -39,6 +43,7 @@ namespace MathLib
 
     int GCD(int a, int b)
     {
+        //func
 		if (b == 0) return a;
 		return GCD(b, a % b);
 	}
