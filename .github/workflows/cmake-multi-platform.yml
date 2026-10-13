@@ -38,23 +38,17 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set reusable strings
-        id: strings
-        shell: bash
-        run: echo "build-output-dir=${GITHUB_WORKSPACE}/build" >> "$GITHUB_OUTPUT"
-
       - name: Configure CMake
         shell: pwsh
         run: |
-          cmake `
-            -B "${{ steps.strings.outputs.build-output-dir }}" `
-            -DCMAKE_C_COMPILER=${{ matrix.c_compiler }} `
-            -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }} `
-            -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} `
+          cmake -B "${{ github.workspace }}/build" `
+            "-DCMAKE_C_COMPILER=${{ matrix.c_compiler }}" `
+            "-DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}" `
+            "-DCMAKE_BUILD_TYPE=${{ matrix.build_type }}" `
             -S "${{ github.workspace }}"
 
       - name: Build
-        run: cmake --build "${{ steps.strings.outputs.build-output-dir }}" --config ${{ matrix.build_type }}
+        run: cmake --build "${{ github.workspace }}/build" --config ${{ matrix.build_type }}
 
       - name: Test
-        run: ctest --test-dir "${{ steps.strings.outputs.build-output-dir }}" -C ${{ matrix.build_type }} --output-on-failure
+        run: ctest --test-dir "${{ github.workspace }}/build" -C ${{ matrix.build_type }} --output-on-failure
