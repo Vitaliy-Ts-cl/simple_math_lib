@@ -49,10 +49,8 @@ namespace MathLib
             throw std::invalid_argument("Cannot get the square root of a negative number");
         double x = a;
         double result;
-        int count = 0;
         while (true)
         {
-            count++;
             result = 0.5 * (x + (a / x));
             if (isEqual(result, x, 0.00001))
                 break;
@@ -61,6 +59,9 @@ namespace MathLib
         return result;
     }
  
+    // Third angle of a triangle from two known angles
+    double getThirdAngle(double angle1, double angle2);
+
     // Function to check whether value is prime
     bool isPrime(int n);
 

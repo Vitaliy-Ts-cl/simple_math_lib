@@ -3,7 +3,8 @@
 
 using namespace MathLib;
 
-int main(int argc, char* argv[])
+// main
+int main()
 {
     double num1 = 10.5, num2 = 2.5;
 
@@ -14,12 +15,7 @@ int main(int argc, char* argv[])
     std::cout << "GCD: " << GCD(num1, num2) << std::endl;
     std::cout << "Square root: " << sqrt(num1) << std::endl;
 
-    switch((int)leastCommonMultiple(4,6))
-    {
-        case 1:
-            std::cout << "The least common multiple is 1" << std::endl;
-        case 2:
-            std::cout << "The least common multiple is 2" << std::endl;
-    }
+    std::cout << "Least common multiple: " << leastCommonMultiple(4, 6) << std::endl;
+
     return 0;
 }

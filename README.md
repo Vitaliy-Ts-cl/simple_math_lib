@@ -24,7 +24,7 @@ For unit tests, gtest is used. However, there is no need to install it as the bu
 4. Build the project:
 
     ```console
-    cmake --build . --target Release
+    cmake --build . --config Release
     ```
 
 6. The built executable should now be located in the `build` directory.

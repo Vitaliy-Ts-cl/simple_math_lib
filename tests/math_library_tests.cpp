@@ -77,3 +77,18 @@ TEST_F(MathLibTestFixture, GreatestCommonDivider)
 {
     EXPECT_EQ(MathLib::GCD(10, 6), 2);
 }
+
+TEST_F(MathLibTestFixture, GetThirdAngleTest)
+{
+    // Рівносторонній трикутник: 60 + 60 = 120 -> 180 - 120 = 60
+    EXPECT_TRUE(MathLib::isEqual(MathLib::getThirdAngle(60.0, 60.0), 60.0));
+
+    // Прямокутний трикутник: 90 + 45 = 135 -> 180 - 135 = 45
+    EXPECT_TRUE(MathLib::isEqual(MathLib::getThirdAngle(90.0, 45.0), 45.0));
+
+    // Дробові значення кутів: 50.5 + 49.25 = 99.75 -> 180 - 99.75 = 80.25
+    EXPECT_TRUE(MathLib::isEqual(MathLib::getThirdAngle(50.5, 49.25), 80.25));
+
+    // Перевірка хибного результату
+    EXPECT_FALSE(MathLib::isEqual(MathLib::getThirdAngle(60.0, 60.0), 90.0));
+}

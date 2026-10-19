@@ -4,9 +4,14 @@
 
 namespace MathLib
 {
+    double getThirdAngle(double angle1, double angle2)
+    {
+        return 180.0 - (angle1 + angle2);
+    }
+
     bool isEqual(double a, double b, double tolerance)
     {
-        return abs(a - b) <= tolerance;
+        return std::abs(a - b) <= tolerance;
     }
 
     bool isPrime(int n)
@@ -39,6 +44,7 @@ namespace MathLib
 
     int GCD(int a, int b)
     {
+        //func
 		if (b == 0) return a;
 		return GCD(b, a % b);
 	}
