@@ -2,15 +2,16 @@
 #include <cmath>
 #include <algorithm>
 
-double getThirdAngle(double angle1, double angle2) {
-    return 180.0 - (angle1 + angle2);
-}
-
 namespace MathLib
 {
+    double getThirdAngle(double angle1, double angle2)
+    {
+        return 180.0 - (angle1 + angle2);
+    }
+
     bool isEqual(double a, double b, double tolerance)
     {
-        return abs(a - b) <= tolerance;
+        return std::abs(a - b) <= tolerance;
     }
 
     bool isPrime(int n)
